@@ -1,4 +1,5 @@
 import NoteForm from './components/NoteForm.jsx';
+import NotesList from './components/NotesList.jsx';
 
 function App() {
 
@@ -10,6 +11,7 @@ function App() {
     </header>
 
       <NoteForm />
+      <NotesList />
 
       <footer>
         <p>@created by hanaraz</p>
