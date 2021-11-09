@@ -3,6 +3,7 @@ import { useDispatch } from "react-redux";
 import { createNote } from '../redux/actions/notes';
 
 const initialState = {
+    id:null,
     title: "",
     content: ""
 }
@@ -12,16 +13,19 @@ const NoteForm = () => {
     const dispatch = useDispatch();
     const [isExpanded, setIsExpanded] = useState(false);
     const [note, setNote] = useState(initialState);
+    const [idCreator , setIdCreator] = useState(0);
+
 
     const handleChange = (e) => {
         const { name, value } = e.target;
-        setNote({ ...note, [name]: value });
+        setNote({ ...note, [name]: value ,id:idCreator});
     }
 
     const addNote = (e) => {
         e.preventDefault();
         dispatch(createNote(note));
         setNote(initialState);
+        setIdCreator(idCreator + 1);
 
     }
 
