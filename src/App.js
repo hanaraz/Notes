@@ -13,10 +13,10 @@ function App() {
       <NoteForm />
       <NotesList />
 
-      <footer>
+      {/* <footer>
         <p>@created by hanaraz</p>
       </footer>
-
+ */}
 
 
     </div>

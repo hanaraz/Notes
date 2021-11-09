@@ -20,7 +20,8 @@ const NoteForm = () => {
 
     const addNote = (e) => {
         e.preventDefault();
-        dispatch(createNote(note))
+        dispatch(createNote(note));
+        setNote(initialState);
 
     }
 
@@ -29,12 +30,14 @@ const NoteForm = () => {
             <form onSubmit={addNote} className="create-note">
                 {isExpanded &&
                     <input
+                        value={note.title}
                         onChange={handleChange}
                         name="title"
                         placeholder="Title"
                     />}
 
                 <textarea
+                    value={note.content}
                     onChange={handleChange}
                     onClick={() => setIsExpanded(true)}
                     name="content"
