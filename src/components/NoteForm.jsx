@@ -1,18 +1,22 @@
-import React from 'react';
-import "./styles.css"
+import React, { useState } from 'react';
 
 const NoteForm = () => {
+
+    const [isExpanded, setIsExpanded] = useState(false);
     return (
         <div>
             <form>
-                <input
-                    name="title"
-                    placeholder="Title"
-                />
+                {isExpanded &&
+                    <input
+                        name="title"
+                        placeholder="Title"
+                    />}
+
                 <textarea
+                    onClick={() => setIsExpanded(true)}
                     name="content"
                     placeholder="Take a note..."
-                    rows="3"
+                    rows={isExpanded? "5" : "1"}
                 />
                 <button>Add</button>
             </form>
