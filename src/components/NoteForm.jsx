@@ -1,32 +1,57 @@
-import React, { useState } from 'react';
-import { useDispatch } from "react-redux";
-import { createNote } from '../redux/actions/notes';
+import React, { useState, useEffect } from 'react';
+import { useDispatch, useSelector } from "react-redux";
+import { createNote, updateNote } from '../redux/actions/notes';
 
 const initialState = {
-    id:null,
-    title: "",
-    content: ""
+    id: null,
+    title: "no title",
+    content: "non content"
 }
 
-const NoteForm = () => {
+const NoteForm = ({ update, setUpdate }) => {
 
     const dispatch = useDispatch();
-    const [isExpanded, setIsExpanded] = useState(false);
     const [note, setNote] = useState(initialState);
-    const [idCreator , setIdCreator] = useState(0);
+    const [isExpanded, setIsExpanded] = useState(false);
+    const [idCreator, setIdCreator] = useState(1);
+    const currentNote = useSelector(state => update ? (state.notes.find(n => n.id === update)) : null);
 
+    useEffect(() => {
+        if (currentNote) {
+            setNote(currentNote);
+        }
+    }, [currentNote])
 
     const handleChange = (e) => {
         const { name, value } = e.target;
-        setNote({ ...note, [name]: value ,id:idCreator});
+        if (!update) {
+            setNote({ ...note, [name]: value, id: idCreator });
+        } else {
+            setNote({ ...note, [name]: value });
+        }
     }
 
     const addNote = (e) => {
         e.preventDefault();
-        dispatch(createNote(note));
-        setNote(initialState);
-        setIdCreator(idCreator + 1);
 
+        if (update) {
+            dispatch(updateNote(note))
+            console.log(note);
+        } else {
+            dispatch(createNote(note));
+            setIdCreator(idCreator + 1);
+        }
+
+        cancel();
+    }
+
+    const cancel = () => {
+        setNote({
+            id: null,
+            title: "",
+            content: ""
+        });
+        setUpdate(null);
     }
 
     return (
@@ -48,7 +73,9 @@ const NoteForm = () => {
                     placeholder="Take a note..."
                     rows={isExpanded ? "3" : "1"}
                 />
-                <button type="submit">Add</button>
+
+                {update && <button className="cancel-btn" onClick={cancel}>Cancel</button>}
+                <button type="submit">{update ? 'Update' : 'Add'}</button>
             </form>
         </div>
 

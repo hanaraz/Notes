@@ -2,7 +2,7 @@ import React from 'react';
 import { useDispatch } from 'react-redux';
 import { deleteNote } from '../redux/actions/notes';
 
-export const Note = ({ note }) => {
+export const Note = ({ note, setUpdate }) => {
 
     const dispatch = useDispatch();
 
@@ -10,12 +10,17 @@ export const Note = ({ note }) => {
         dispatch(deleteNote(note.id));
     }
 
+    const editNote = () => {
+        setUpdate(note.id);
+        console.log(note);
+    }
+
     return (
         <div className="note">
             <h1>{note.title}</h1>
             <p>{note.content}</p>
-            <button className="edit-btn">Edit</button>
-            <button className="delete-btn" onClick={removeNote}>Delete</button>
+            <button className="edit-btn" onClick={editNote}>...</button>
+            <button className="delete-btn" onClick={removeNote}>X</button>
 
 
         </div>

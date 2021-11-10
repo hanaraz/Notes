@@ -85,6 +85,11 @@ form button {
     outline: none;
 }
 
+form button.cancel-btn {
+    color: red;
+    right: 68px;
+}
+
 
 /* NOTE*/
 
@@ -116,8 +121,7 @@ form button {
     position: absolute;
     border-radius: 7px;
     margin-right: 10px;
-    background: black;
-    color: #fff;
+    color: black;
     border: none;
     width: 40px;
     height: 25px;

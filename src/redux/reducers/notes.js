@@ -1,4 +1,4 @@
-import { CREATE, DELETE } from "../actions/actionTypes";
+import { CREATE, DELETE, UPDATE } from "../actions/actionTypes";
 
 
 const notesReducer = (notes = [], action) => {
@@ -8,6 +8,10 @@ const notesReducer = (notes = [], action) => {
 
         case DELETE:
             return notes.filter(note => note.id !== action.payload);
+
+        case UPDATE:
+            return notes.map(note => (note.id === action.payload.id) ? action.payload : note)
+
         default:
             return notes;
     }
