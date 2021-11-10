@@ -12,7 +12,6 @@ export const Note = ({ note, setUpdate }) => {
 
     const editNote = () => {
         setUpdate(note.id);
-        console.log(note);
     }
 
     return (
@@ -21,7 +20,6 @@ export const Note = ({ note, setUpdate }) => {
             <p>{note.content}</p>
             <button className="edit-btn" onClick={editNote}>...</button>
             <button className="delete-btn" onClick={removeNote}>X</button>
-
 
         </div>
     )

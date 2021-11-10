@@ -1,5 +1,3 @@
-/*ALL PAGE*/
-
 * {
     padding: 0;
     margin: 0;
@@ -15,11 +13,8 @@ body {
     padding: 0 16px;
 }
 
-
-/*APP*/
-
 header {
-    background-color: black;
+    background-color: #142F43;
     color: #fff;
     margin: auto -16px;
     padding: 16px 32px;
@@ -31,22 +26,6 @@ header h1 {
     font-family: "McLaren", cursive;
     font-weight: 200;
 }
-
-
-/* footer {
-    position: absolute;
-    text-align: center;
-    bottom: 0;
-    width: 100%;
-    height: 2.5rem;
-}
-
-footer p {
-    color: #ccc;
-} */
-
-
-/*NOTEFORM*/
 
 form.create-note {
     position: relative;
@@ -70,34 +49,35 @@ form.create-note textarea {
     margin: 5px;
 }
 
+form.create-note textarea {
+    margin-bottom: 20px;
+}
+
 form button {
     position: absolute;
-    right: 18px;
-    bottom: -18px;
-    background: black;
-    color: #fff;
+    border-radius: 7px;
+    margin-right: 10px;
+    color: black;
     border: none;
-    border-radius: 50%;
-    width: 36px;
-    height: 36px;
+    width: 50px;
+    height: 30px;
     box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
     cursor: pointer;
     outline: none;
+    right: 0;
+    bottom: 5px;
 }
 
 form button.cancel-btn {
     color: red;
-    right: 68px;
+    right: 60px;
 }
-
-
-/* NOTE*/
 
 .note {
     background: #fff;
     border-radius: 7px;
     box-shadow: 0 2px 5px #ccc;
-    padding: 10px;
+    padding: 25px 10px 25px 10px;
     width: 240px;
     margin: 16px;
     float: left;
@@ -133,6 +113,7 @@ form button.cancel-btn {
 
 .delete-btn {
     bottom: 5px;
+    color: red;
 }
 
 .edit-btn {

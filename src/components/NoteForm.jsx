@@ -4,8 +4,8 @@ import { createNote, updateNote } from '../redux/actions/notes';
 
 const initialState = {
     id: null,
-    title: "no title",
-    content: "non content"
+    title: "",
+    content: ""
 }
 
 const NoteForm = ({ update, setUpdate }) => {
@@ -36,7 +36,6 @@ const NoteForm = ({ update, setUpdate }) => {
 
         if (update) {
             dispatch(updateNote(note))
-            console.log(note);
         } else {
             dispatch(createNote(note));
             setIdCreator(idCreator + 1);
