@@ -2,7 +2,6 @@
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-Visit project site: https://notes-app21.netlify.app/
 
 ## Available Scripts
 
